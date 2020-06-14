@@ -6,8 +6,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Parent" />
+        <module name="spring-common" />
+        <module name="spring-core" />
+        <module name="spring-manager" />
+        <module name="spring-starter" />
+        <module name="spring-service" />
+        <module name="spring-client" />
+        <module name="spring-atop" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-atop" options="-parameters" />
+      <module name="spring-client" options="-parameters" />
+      <module name="spring-common" options="-parameters" />
+      <module name="spring-core" options="-parameters" />
+      <module name="spring-manager" options="-parameters" />
+      <module name="spring-server" options="-parameters" />
+      <module name="spring-service" options="-parameters" />
+      <module name="spring-starter" options="-parameters" />
+    </option>
   </component>
 </project>
