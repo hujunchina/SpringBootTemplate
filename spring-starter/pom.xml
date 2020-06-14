@@ -14,10 +14,25 @@
 
 <!--    由于父类项目定义了 parent 中指定了spring版本，这里就不用指定了-->
     <dependencies>
+<!--        web 组件，包括很多额外的包，如 annotation-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+<!--        测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+<!--            因为parent 没有引入spring，要想使用spring约定，需要手动加入spring插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
