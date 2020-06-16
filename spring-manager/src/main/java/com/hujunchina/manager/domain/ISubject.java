@@ -9,4 +9,8 @@ public interface ISubject {
 
     void proxyMethod();
 
+    void jdkInvokeMethod(String arg);
+
+    void cglibInvokeMethod(String arg1, String arg2);
+
 }

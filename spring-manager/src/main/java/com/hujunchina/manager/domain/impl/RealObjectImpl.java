@@ -13,4 +13,14 @@ public class RealObjectImpl implements ISubject {
     public void proxyMethod() {
         System.out.println("静态代理方法执行了");
     }
+
+    @Override
+    public void jdkInvokeMethod(String arg) {
+        System.out.println("JDK 代理执行了，参数："+arg);
+    }
+
+    @Override
+    public void cglibInvokeMethod(String arg1, String arg2) {
+        System.out.println("CGLIB 代理执行了，参数："+arg1+" "+arg2);
+    }
 }

@@ -31,4 +31,14 @@ public class StaticProxy implements ISubject {
         subject.proxyMethod();
         this.after();
     }
+
+    @Override
+    public void jdkInvokeMethod(String arg) {
+
+    }
+
+    @Override
+    public void cglibInvokeMethod(String arg1, String arg2) {
+
+    }
 }
