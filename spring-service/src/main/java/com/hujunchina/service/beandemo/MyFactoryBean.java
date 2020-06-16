@@ -3,6 +3,7 @@ package com.hujunchina.service.beandemo;
 import com.hujunchina.core.dao.IAdminDAO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,25 +15,17 @@ import java.lang.reflect.Proxy;
  * @Author hujunchina@outlook.com
  * @date 2020-06-14
  */
-@Service
+@Component
 @Slf4j
 public class MyFactoryBean implements FactoryBean {
 
     @Resource
     IAdminDAO adminDAO;
 
+    /** 自定义工厂类可以返回任何类型对象*/
     @Override
     public Object getObject() throws Exception {
-        Proxy.newProxyInstance(IAdminDAO.class.getClassLoader(), new Class[]{IAdminDAO.class}, new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                before();
-                log.info("调用 proxy 类");
-                after();
-                return null;
-            }
-        });
-        return null;
+        return adminDAO;
     }
 
     public void before(){
@@ -45,6 +38,6 @@ public class MyFactoryBean implements FactoryBean {
 
     @Override
     public Class<?> getObjectType() {
-        return null;
+        return IAdminDAO.class;
     }
 }

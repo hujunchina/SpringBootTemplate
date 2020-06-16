@@ -18,7 +18,7 @@ public class SpringStarter {
         Long startTime = System.currentTimeMillis();
         SpringApplication.run(SpringStarter.class, args);
         Long endTime = System.currentTimeMillis();
-        logger.info("Spring 启动成功：用时：{} 秒", (endTime-startTime)/60);
+        logger.info("Spring 启动成功：用时：{} 秒", (endTime-startTime)/1000);
 
     }
 }

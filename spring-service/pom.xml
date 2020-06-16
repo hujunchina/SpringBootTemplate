@@ -44,6 +44,12 @@
             <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.hujunchina</groupId>
+            <artifactId>spring-manager</artifactId>
+            <version>1.0.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

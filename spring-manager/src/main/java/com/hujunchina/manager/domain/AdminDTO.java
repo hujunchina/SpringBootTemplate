@@ -1,4 +1,4 @@
-package com.hujunchina.manager;
+package com.hujunchina.manager.domain;
 
 /**
  * @Author hujunchina@outlook.com
