@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <!--    指定模块版本-->
     <modelVersion>4.0.0</modelVersion>
-<!--    -->
+<!--    包类型-->
     <packaging>pom</packaging>
 <!--    子模块名称-->
     <modules>
@@ -26,6 +26,7 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
 <!--    本项目信息-->
     <groupId>com.hujunchina</groupId>
     <artifactId>Parent</artifactId>

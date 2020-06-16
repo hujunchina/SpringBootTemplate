@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-service</artifactId>
+    <groupId>com.hujunchina.service</groupId>
 
     <dependencies>
         <dependency>
@@ -22,10 +23,26 @@
         </dependency>
 <!--        使用其他模块的类需要导入依赖-->
         <dependency>
-            <groupId>com.hujunchina</groupId>
+            <groupId>com.hujunchina.core</groupId>
             <artifactId>spring-core</artifactId>
             <version>1.0.1</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.hujunchina</groupId>
+            <artifactId>spring-starter</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
