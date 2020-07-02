@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import com.hujunchina.common.PagingUtils;
 import java.util.List;
 
 /**
@@ -21,6 +22,10 @@ public class AdminService {
 
     public List<AdminDO> getAdminList(){
         return adminDAO.selectList(null);
+    }
+
+    public String getPageName(){
+        return PagingUtils.getPageName("test");
     }
 
 }
