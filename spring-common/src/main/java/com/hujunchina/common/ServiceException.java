@@ -5,8 +5,10 @@ package com.hujunchina.common;
  * 包括 key，msg
  * @Author hujunchina@outlook.com
  * @Date 2020-06-16
+ * 通过定义枚举异常返回结果（来自edge-gateway-proxy）
  */
 public enum ServiceException {
+    ERROR("error", "some thing error")
     ;
 
     /** 关键字*/

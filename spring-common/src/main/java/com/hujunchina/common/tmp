@@ -1,0 +1,89 @@
+package com.tuya.edge.utils;
+
+import android.util.Log;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.tuya.edge.enums.TuyaConstants;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class HttpUtils {
+
+
+    /**
+     * 上传图片
+     *
+     * @param uploadUrl
+     * @param token
+     * @param fileByte
+     * @param fileName
+     * @param fileType  如image/jpg
+     * @return imageId
+     */
+    public static String uploadImageFile(String uploadUrl, String token, byte[] fileByte,
+                                         String fileType, String fileName) throws Exception {
+        OkHttpClient client = new OkHttpClient.Builder().build();
+
+        // 设置文件以及文件上传类型封装
+        RequestBody requestBody = RequestBody.create(MediaType.parse(fileType), fileByte);
+
+        // 文件上传的请求体封装
+        MultipartBody multipartBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM).addFormDataPart("file", fileName, requestBody).build();
+
+        Request request = new Request.Builder().url(uploadUrl).addHeader("file_upload_token", token)
+                .post(multipartBody).build();
+        Response response = client.newCall(request).execute();
+
+        if (response.code() != 200) {
+            Log.e(TuyaConstants.TAG, "HttpClient,error status code :" + response.code());
+            return null;
+        }
+
+        JSONObject uploadJsonObject = JSON.parseObject(response.body().string());
+        if (uploadJsonObject.getBoolean("success")) {
+            uploadJsonObject = uploadJsonObject.getJSONObject("result");
+            return uploadJsonObject.getString("tmp_file_id");
+        }
+        return null;
+    }
+
+    public static byte[] readStream(InputStream inStream, int size) throws Exception {
+        ByteArrayOutputStream outSteam = null;
+        try {
+            outSteam = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int len = -1;
+            int total = 0;
+            while ((len = inStream.read(buffer)) != -1 || total < size) {
+                total += len;
+                outSteam.write(buffer, 0, len);
+            }
+            outSteam.flush();
+            outSteam.close();
+            return outSteam.toByteArray();
+        } catch (Exception e) {
+            Log.e(TuyaConstants.TAG, "读取字节流失败", e);
+        } finally {
+            if (outSteam != null) {
+                outSteam.close();
+            }
+        }
+        return null;
+
+    }
+}
