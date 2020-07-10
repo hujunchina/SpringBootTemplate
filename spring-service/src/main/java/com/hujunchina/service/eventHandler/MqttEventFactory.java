@@ -26,13 +26,13 @@ public class MqttEventFactory {
     /** 先加载各个事件处理器*/
     public void init(){
         handlerMap = new HashMap<>();
-        // 状态上报
+        // 状态上报（上报）
         handlerMap.put(125, new MqttStatusUploadEventHandler());
-        // 通行事件
+        // 通行事件（上报）
         handlerMap.put(126, new MqttPassOverEventHandler());
-        // 开门事件
+        // 开门事件（下发）
         handlerMap.put(127, new MqttDoorOpenEventHandler());
-        // 云可视对讲事件
+        // 云可视对讲事件（下发）
         handlerMap.put(128, new MqttCallAppEventHandler());
     }
 

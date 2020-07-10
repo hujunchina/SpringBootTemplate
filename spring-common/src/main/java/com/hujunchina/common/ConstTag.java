@@ -13,4 +13,8 @@ public class ConstTag {
     public static final String AUTHOR = "hujunchina@outlook.com";
 
     public static final String EVENT = "MQTT Event";
+
+    public static final String FACE_IMAGE = "涂鸦云人脸图片更新事件";
+
+    public static final String FACE_IMAGE_DEVICE = "三方设备人脸图片更新事件";
 }
