@@ -1,6 +1,6 @@
 package com.hujunchina.service;
 
-import com.hujunchina.service.beandemo.MyFactoryBean;
+import com.hujunchina.service.beanDemo.MyFactoryBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class BeanDemoTest {
 
     @Test
     public void beanTest(){
-        MyFactoryBean factoryBean = (MyFactoryBean) context.getBean("MyFactoryBean");
-        factoryBean.after();
+//        MyFactoryBean factoryBean = (MyFactoryBean) context.getBean("MyFactoryBean");
+//        factoryBean.after();
     }
 
 }

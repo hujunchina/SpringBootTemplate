@@ -1,9 +1,13 @@
 package com.hujunchina.controller;
 
 import com.google.inject.internal.cglib.core.$ReflectUtils;
+import com.hujunchina.common.ServiceResponseCode;
+import com.hujunchina.core.dao.IRoleDAO;
+import com.hujunchina.core.domain.RoleDO;
 import com.hujunchina.manager.domain.TokenUserDTO;
 import com.hujunchina.service.ServiceResponse;
 import com.hujunchina.service.tokenAuth.TokenAuthService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +26,14 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/")
+@Slf4j
 public class MainController {
 
     @Resource
     TokenAuthService tokenAuthService;
+
+    @Resource
+    IRoleDAO roleDAO;
 
     @GetMapping("/index")
     public String index(){
@@ -46,5 +54,22 @@ public class MainController {
         tokenUserDTO.setToken(token);
         ServiceResponse<String> result = tokenAuthService.getToken(tokenUserDTO);
         return result;
+    }
+
+    @GetMapping("sql")
+    public ServiceResponse<String> sql() {
+        Long start = System.currentTimeMillis();
+        RoleDO role = new RoleDO();
+        for (int i=1; i<100; i++) {
+            role.setStatus(1);
+            role.setRoleName("role"+i*100);
+            role.setRoleCode(String.valueOf(i*100));
+            role.setUid(String.valueOf(i));
+            roleDAO.insertRole(role);
+        }
+        Long end = System.currentTimeMillis();
+
+        log.info("escape time : {}", end-start);
+        return ServiceResponse.asSuccess(ServiceResponseCode.SUCCESS, String.valueOf(end-start));
     }
 }

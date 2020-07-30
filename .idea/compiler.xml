@@ -7,13 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-common" />
         <module name="spring-client" />
-        <module name="spring-starter" />
+        <module name="spring-atop" />
+        <module name="spring-algorithm" />
+        <module name="spring-common" />
         <module name="spring-manager" />
+        <module name="spring-starter" />
         <module name="spring-service" />
         <module name="spring-core" />
-        <module name="spring-atop" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-algorithm" options="-parameters" />
       <module name="spring-atop" options="-parameters" />
       <module name="spring-client" options="-parameters" />
       <module name="spring-common" options="-parameters" />

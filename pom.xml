@@ -15,6 +15,7 @@
         <module>spring-atop</module>
         <module>spring-common</module>
         <module>spring-service</module>
+        <module>spring-algorithm</module>
     </modules>
 
     <!--    这个parent指定了spring-boot所需要的依赖
@@ -31,6 +32,5 @@
     <groupId>com.hujunchina</groupId>
     <artifactId>Parent</artifactId>
     <version>1.0.1</version>
-
 
 </project>

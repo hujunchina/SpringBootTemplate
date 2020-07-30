@@ -2,6 +2,9 @@ package com.hujunchina.core.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hujunchina.core.domain.AdminDO;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @Author hujunchina@outlook.com

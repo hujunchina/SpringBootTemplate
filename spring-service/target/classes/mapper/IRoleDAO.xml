@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hujunchina.core.dao.IRoleDAO">
+
+    <insert id="insertRole" parameterType="com.hujunchina.core.domain.RoleDO">
+        INSERT INTO
+        kunlun_role(uid, role_code, role_name, status)
+        VALUES(#{uid}, #{roleCode}, #{roleName}, #{status})
+    </insert>
+
+    <insert id="insertRoleList" parameterType="com.hujunchina.core.domain.RoleDO">
+        <foreach collection="list" item="item" open="" close="" separator=";">
+            INSERT
+            kunlun_role
+            SET
+            uid = #{uid}, role_code = #{roleCode}, role_name = #{roleName}, status = #{status}
+        </foreach>
+    </insert>
+
+    <insert id="insertRoleForList" parameterType="com.hujunchina.core.domain.RoleDO">
+        INSERT INTO
+        kunlun_role(uid, role_code, role_name, status)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.uid}, #{item.roleCode}, #{item.roleName}, #{item.status})
+        </foreach>
+    </insert>
+
+    <update id="updateRole" parameterType="com.hujunchina.core.domain.RoleDO">
+        UPDATE
+        kunlun_role
+        SET
+        role_code = #{roleCode}, role_name = #{roleName}
+        WHERE
+        uid = #{uid}
+    </update>
+
+    <delete id="removeRole" parameterType="integer">
+        UPDATE
+        kunlun_role
+        SET
+        status = 1
+        WHERE
+        uid = #{uid}
+    </delete>
+
+</mapper>

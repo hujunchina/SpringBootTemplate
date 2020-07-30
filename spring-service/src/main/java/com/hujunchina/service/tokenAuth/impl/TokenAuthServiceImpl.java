@@ -54,4 +54,10 @@ public class TokenAuthServiceImpl implements TokenAuthService {
     public boolean deleteToken(TokenUserDTO tokenUserDTO) {
         return false;
     }
+
+    @Override
+    public boolean checkToken(String token) {
+        log.info("TokenAuthServiceImpl check token");
+        return true;
+    }
 }

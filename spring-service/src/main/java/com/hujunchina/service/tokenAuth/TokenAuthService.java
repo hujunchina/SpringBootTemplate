@@ -17,4 +17,6 @@ public interface TokenAuthService {
     ServiceResponse<String> refreshToken(TokenUserDTO tokenUserDTO);
 
     boolean deleteToken(TokenUserDTO tokenUserDTO);
+
+    boolean checkToken(String token);
 }
