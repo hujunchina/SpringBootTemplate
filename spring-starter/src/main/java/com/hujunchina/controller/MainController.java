@@ -1,7 +1,9 @@
 package com.hujunchina.controller;
 
 import com.google.inject.internal.cglib.core.$ReflectUtils;
+import com.hujunchina.common.ServiceResponseCode;
 import com.hujunchina.manager.domain.TokenUserDTO;
+import com.hujunchina.service.SQL.SqlService;
 import com.hujunchina.service.ServiceResponse;
 import com.hujunchina.service.tokenAuth.TokenAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class MainController {
     @Resource
     TokenAuthService tokenAuthService;
 
+    @Resource
+    SqlService sqlService;
+
     @GetMapping("/index")
     public String index(){
         return "Hello Spring!";
@@ -47,4 +52,14 @@ public class MainController {
         ServiceResponse<String> result = tokenAuthService.getToken(tokenUserDTO);
         return result;
     }
+
+    @GetMapping("/sql")
+    public ServiceResponse<String> sql() {
+        long start = System.currentTimeMillis();
+        boolean addFinish = sqlService.addRole();
+        long end = System.currentTimeMillis();
+        ServiceResponse<String> result = ServiceResponse.asSuccess(ServiceResponseCode.SUCCESS, String.valueOf(end-start));
+        return result;
+    }
+
 }

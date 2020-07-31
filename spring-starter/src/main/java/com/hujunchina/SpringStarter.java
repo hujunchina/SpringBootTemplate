@@ -1,5 +1,6 @@
 package com.hujunchina;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * @Author hujunchina@outlook.com
  */
-@SpringBootApplication
+@SpringBootApplication(excludeName = "com.hujunchina")
+@MapperScan("com.hujunchina.core") // 告诉mapper位置
 public class SpringStarter {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringStarter.class);

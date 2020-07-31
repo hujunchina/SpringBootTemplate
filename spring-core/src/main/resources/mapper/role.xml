@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hujunchina.core.dao.IRoleDAO">
+
+    <insert id="insertRole" parameterType="com.hujunchina.core.domain.RoleDO">
+     insert into kunlun_role(role_code,role_name) values (#{roleCode}, #{roleName})
+    </insert>
+
+    <insert id="insertRoleList" parameterType="com.hujunchina.core.domain.RoleDO">
+        <foreach collection="list" item="item" open="" close="" separator=";">
+            insert   `kunlun_role` set role_code = '111' , role_name ='11111'
+        </foreach>
+    </insert>
+
+    <insert id="insertRoleList2" parameterType="com.hujunchina.core.domain.RoleDO">
+        insert into kunlun_role(role_code,role_name)values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.roleCode}, #{item.roleName})
+        </foreach>
+    </insert>
+</mapper>
