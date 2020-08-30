@@ -5,7 +5,11 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author 管仲（胡军 hujun@tuya.com）
@@ -38,5 +42,19 @@ public class OtherTest {
         String name = jsonObject.getString("name");
         String use = jsonObject.getString("use");
         log.info(name+use);
+    }
+
+    @Test
+    public void StreamTest(){
+        List<String> arr = new ArrayList<>();
+        arr.add("hujun");
+        arr.add("test");
+        arr.add("123");
+        // 对每个元素进行流处理
+        List<String> Arr = arr.stream().map(res->{
+            System.out.println(res);
+            return res+"1";
+        }).collect(Collectors.toList());
+        System.out.println(Arr.toString());
     }
 }
